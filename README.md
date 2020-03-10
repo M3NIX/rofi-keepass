@@ -6,6 +6,13 @@ A rofi frontend to quickly access your keepass file
 
 `pip install -r requirements.txt --user`
 
+or
+
+```
+virtualenv -p python3 virtualenv
+pip install -r requirements.txt
+```
+
 Following packages are needded:
 
 - xdotool
