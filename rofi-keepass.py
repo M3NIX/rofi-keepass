@@ -33,18 +33,21 @@ index, key = r.select('Name', options, key1=('Alt+1', "Type all"), key2=('Alt+2'
 
 if(key == 0):
     # copy password
-    cmd = "echo -n '" + shlex.quote(kp.entries[index].password) + "' | xclip -selection clipboard"
+    cmd = "echo -n " + shlex.quote(kp.entries[index].password) + " | xclip -selection clipboard"
     subprocess.Popen(cmd,shell=True).communicate()
     Notification("Will be cleared in 15 seconds", kp.entries[index].title + " copied")
-    subprocess.Popen("sleep 15 && echo -n "" | xclip -selection clipboard -r", shell=True).communicate()
+    subprocess.Popen("sleep 15 && echo -n "" | xclip -selection clipboard", shell=True).communicate()
 elif(key == 1):
     # type all
+    subprocess.call(["sleep", "0.5"])
     subprocess.call(["xdotool", "type",  kp.entries[index].username])
     subprocess.call(["xdotool", "key",  "Tab"])
     subprocess.call(["xdotool", "type",  kp.entries[index].password])
 elif(key == 2):
     # type user
-    subprocess.call(["xdotool", "type",  kp.entries[index].username])
+    subprocess.call(["sleep", "0.5"])
+    subprocess.call(["xdotool", "type", kp.entries[index].username])
 elif(key == 3):
     # type password
+    subprocess.call(["sleep", "0.5"])
     subprocess.call(["xdotool", "type",  kp.entries[index].password])
